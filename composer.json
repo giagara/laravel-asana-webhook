@@ -1,0 +1,55 @@
+{
+    "name": "giagara/asana-webhook",
+    "description": "Laravel asana webhook integration",
+    "keywords": [
+        "giagara",
+        "asana-webhook"
+    ],
+    "homepage": "https://github.com/giagara/asana-webhook",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Garavaglia Giacomo",
+            "email": "giagara@yahoo.it",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.0|^10.0"
+    },
+    "require-dev": {
+        "laravel/framework": "^9.0|^10.0",
+        "orchestra/testbench": "^7.0|^8.0",
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Giagara\\AsanaWebhook\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Giagara\\AsanaWebhook\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Giagara\\AsanaWebhook\\AsanaWebhookServiceProvider"
+            ],
+            "aliases": {
+                "AsanaWebhook": "Giagara\\AsanaWebhook\\AsanaWebhookFacade"
+            }
+        }
+    }
+}
