@@ -28,8 +28,9 @@ class CreateWebhookCommand extends Command
     {
         $personal_access_token = config('asana-webhook.personal_access_token');
 
-        if(! $personal_access_token){
-            $this->error("Personal access token not set. Add it in yout .env");
+        if (! $personal_access_token) {
+            $this->error('Personal access token not set. Add it in yout .env');
+
             return 90;
         }
 
@@ -37,50 +38,49 @@ class CreateWebhookCommand extends Command
         $target = $this->getTarget();
 
         $response = $this->getClient()
-        ->post("https://app.asana.com/api/1.0/webhooks", [
-            "data" => [
-                "resource" => $resource,
-                "target" => $target
-            ]
-        ]);
+            ->post('https://app.asana.com/api/1.0/webhooks', [
+                'data' => [
+                    'resource' => $resource,
+                    'target' => $target,
+                ],
+            ]);
 
-        $this->info("Response with status " . $response->status());
+        $this->info('Response with status '.$response->status());
 
-        if($response->failed()){
-            
+        if ($response->failed()) {
+
             $this->displayErrors($response->body());
 
             return 91;
         }
 
-        $this->info("Webhook created successfully");
-
+        $this->info('Webhook created successfully');
 
     }
 
-    private function getResource() : string
+    private function getResource(): string
     {
         $resource = $this->option('resource');
 
-        if(!$resource){
+        if (! $resource) {
             $resource = $this->ask('Insert resource name');
         }
 
         return $resource;
     }
 
-    private function getTarget() : string
+    private function getTarget(): string
     {
         $target = $this->option('target');
 
-        if(!$target){
+        if (! $target) {
             $target = $this->ask('Insert target');
         }
 
         return $target;
     }
 
-    private function getClient() : \Illuminate\Http\Client\PendingRequest
+    private function getClient(): \Illuminate\Http\Client\PendingRequest
     {
 
         return Http::withToken(config('asana-webhook.personal_access_token'))
@@ -88,15 +88,15 @@ class CreateWebhookCommand extends Command
 
     }
 
-    private function displayErrors(string $responseBody) : void
+    private function displayErrors(string $responseBody): void
     {
-        $this->error("Error while creating webhook:");
+        $this->error('Error while creating webhook:');
 
-        foreach(json_decode($responseBody, true)["errors"] ?? [] as $error){
+        foreach (json_decode($responseBody, true)['errors'] ?? [] as $error) {
 
-            $this->error($error["message"] ?? "Unknown message");
+            $this->error($error['message'] ?? 'Unknown message');
 
-            $this->warn($error["help"] ?? "");
+            $this->warn($error['help'] ?? '');
 
         }
     }
