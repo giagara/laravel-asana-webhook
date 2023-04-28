@@ -4,7 +4,7 @@ This package let you integrate easily with Asana Webhooks.
 
 ## Installation
 
-You can install the package via composer:
+Install the package via composer:
 
 ```bash
 composer require giagara/asana-webhook
@@ -21,13 +21,13 @@ php artisan vendor:publish --tags=asana-webhook
 First of all you need to configure the personal access token to communicate with Asana.
 You can get it here: [https://developers.asana.com/docs/personal-access-token](https://developers.asana.com/docs/personal-access-token)
 
-Then add it in your .env file
+Add it in your .env file
 
 ```bash
 ASANA_PERSONAL_ACCESS_TOKEN=your_token
 ```
 
-Then you need to configure the routing by adding items to the `route` array in config file.
+Configure the routing by adding items to the `route` array in config file.
 
 ```php
 'routes' => [
@@ -36,6 +36,7 @@ Then you need to configure the routing by adding items to the `route` array in c
 ```
 
 NOTE: the invokable class must implements `AsanaActionInterface`.
+NOTE: the route is forced to use `api/` prefix so, in this case, the final path will be `api/webhook`.
 
 Example: 
 ```php
