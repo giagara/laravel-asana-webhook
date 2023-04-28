@@ -4,12 +4,11 @@ namespace Giagara\AsanaWebhook;
 
 use Giagara\AsanaWebhook\Console\Commands\CreateWebhookCommand;
 use Giagara\AsanaWebhook\Http\Middleware\AsanaWebhookMiddleware;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 
 class AsanaWebhookServiceProvider extends ServiceProvider
 {
-
     public static function basePath(string $path): string
     {
         return __DIR__.'/..'.$path;
@@ -28,9 +27,8 @@ class AsanaWebhookServiceProvider extends ServiceProvider
                 __DIR__.'/../config/config.php' => config_path('asana-webhook.php'),
             ], 'asana-webhook-config');
 
-           
             $this->commands([
-                CreateWebhookCommand::class
+                CreateWebhookCommand::class,
             ]);
         }
     }

@@ -6,20 +6,20 @@ use Giagara\AsanaWebhook\AsanaWebhookServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
-  public function setUp(): void
-  {
-    parent::setUp();
-  }
+    public function setUp(): void
+    {
+        parent::setUp();
+    }
 
-  protected function getPackageProviders($app)
-  {
-    return [
-        AsanaWebhookServiceProvider::class,
-    ];
-  }
+    protected function getPackageProviders($app)
+    {
+        return [
+            AsanaWebhookServiceProvider::class,
+        ];
+    }
 
-  protected function getEnvironmentSetUp($app)
-  {
-    // perform environment setup
-  }
+    protected function getEnvironmentSetUp($app)
+    {
+        // perform environment setup
+    }
 }
