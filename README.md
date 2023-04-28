@@ -72,6 +72,11 @@ You can pass the parameters in command directly with:
 php artisan make:asana-webhook --resource=1234 --target=https://example.com/api/webhook
 ```
 
+### TODO
+
+- [ ] Delete a webhook via command
+- [ ] Add middleware to route configs
+- [ ] Add name to route config
 
 ### Testing
 
