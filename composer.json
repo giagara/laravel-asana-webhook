@@ -20,6 +20,8 @@
         "illuminate/support": "^9.0|^10.0"
     },
     "require-dev": {
+        "guzzlehttp/guzzle": "^7.5",
+        "guzzlehttp/promises": "^1.5",
         "laravel/framework": "^9.0|^10.0",
         "orchestra/testbench": "^7.0|^8.0",
         "phpunit/phpunit": "^9.6"

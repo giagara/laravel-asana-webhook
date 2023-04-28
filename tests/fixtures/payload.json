@@ -1,0 +1,27 @@
+{
+    "gid": "12345",
+    "resource_type": "webhook",
+    "active": false,
+    "resource": {
+      "gid": "12345",
+      "resource_type": "task",
+      "name": "Bug Task"
+    },
+    "target": "https://example.com/receive-webhook/7654",
+    "created_at": "2012-02-22T02:06:58.147Z",
+    "filters": [
+      {
+        "action": "changed",
+        "fields": [
+          "due_at",
+          "due_on",
+          "dependencies"
+        ],
+        "resource_subtype": "milestone",
+        "resource_type": "task"
+      }
+    ],
+    "last_failure_at": "2012-02-22T02:06:58.147Z",
+    "last_failure_content": "500 Server Error\\n\\nCould not complete the request",
+    "last_success_at": "2012-02-22T02:06:58.147Z"
+  }

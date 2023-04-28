@@ -1,0 +1,8 @@
+{
+    "errors": [
+        {
+            "message": "Some error",
+            "help": "For more information on API status codes and how to handle them, read the docs on errors: https://developers.asana.com/docs/errors"
+        }
+    ]
+}

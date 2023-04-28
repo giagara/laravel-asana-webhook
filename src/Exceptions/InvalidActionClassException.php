@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace Giagara\AsanaWebhook\Exceptions;
 
 use Exception;
 
