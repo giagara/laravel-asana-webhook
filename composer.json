@@ -1,9 +1,11 @@
 {
-    "name": "giagara/asana-webhook",
+    "name": "giagara/laravel-asana-webhook",
     "description": "Laravel asana webhook integration",
     "keywords": [
         "giagara",
-        "asana-webhook"
+        "asana",
+        "laravel",
+        "asana"
     ],
     "homepage": "https://github.com/giagara/asana-webhook",
     "license": "MIT",
