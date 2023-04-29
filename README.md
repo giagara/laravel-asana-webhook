@@ -7,7 +7,7 @@ This package let you integrate easily with Asana Webhooks.
 Install the package via composer:
 
 ```bash
-composer require giagara/asana-webhook
+composer require giagara/laravel-asana-webhook
 ```
 
 Publish config file with
