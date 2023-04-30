@@ -23,7 +23,7 @@ class ListCommandTest extends TestCase
             ),
         ]);
 
-        $execution = $this->artisan('asana:list')->assertExitCode($exit_code);
+        $execution = $this->artisan('asana:list-webhook')->assertExitCode($exit_code);
 
         if($check_table)
         {
