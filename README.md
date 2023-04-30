@@ -39,6 +39,17 @@ Configure the routing by adding items to the `route` array in config file.
 ],
 ```
 
+Alternatively the configuration can support name and middlewares
+```php
+'routes' => [
+    'webhook' => [
+        'class' => AnInvokableClass::class,
+        'name' => 'webhook-1',
+        'middleware' => [CustomMiddleware::class],
+    ]
+]
+```
+
 NOTE: the invokable class must implements `AsanaActionInterface`.
 NOTE: the route is forced to use `api/` prefix so, in this case, the final path will be `api/webhook`.
 
@@ -100,9 +111,9 @@ php artisan asana:delete-webhook {webhook_gid}
 ### TODO
 
 - [x] Create webhook list command
-- [ ] Delete a webhook via command
-- [ ] Add middleware to route configs
-- [ ] Add name to route config
+- [x] Delete a webhook via command
+- [x] Add middleware to route configs
+- [x] Add name to route config
 - [ ] Trigger via route name
 
 ### Testing
