@@ -1,5 +1,9 @@
 # Laravel asana webhook integration
 
+![CI/CD](https://github.com/giagara/laravel-asana-webhook/actions/workflows/main.yml/badge.svg?branch=main)
+![Packagist](https://img.shields.io/packagist/v/giagara/laravel-asana-webhook.svg)
+
+
 This package let you integrate easily with Asana Webhooks.
 
 ## Installation
