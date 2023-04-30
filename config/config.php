@@ -28,6 +28,11 @@ return [
 
     'routes' => [
         // 'route/to/webhook' => Path/To/MyInvokableClass::class
+        // 'route/to/webhook' => [
+        //     'class' => Path\To\MyInvokableClass::class,
+        //     'name' => 'webhook-1',
+        //     'middleware' => [Middleware1::class],
+        // ]
     ],
 
 ];
