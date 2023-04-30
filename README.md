@@ -91,6 +91,7 @@ php artisan asana:create-webhook --resource=1234 --target=https://example.com/ap
 
 ### TODO
 
+- [x] Create webhook list command
 - [ ] Delete a webhook via command
 - [ ] Add middleware to route configs
 - [ ] Add name to route config
