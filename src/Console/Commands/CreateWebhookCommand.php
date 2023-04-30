@@ -2,17 +2,16 @@
 
 namespace Giagara\AsanaWebhook\Console\Commands;
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Http;
 
-class CreateWebhookCommand extends Command
+
+class CreateWebhookCommand extends AsanaBaseCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'make:asana-webhook {--resource=} {--target=}';
+    protected $signature = 'asana:create-webhook {--resource=} {--target=}';
 
     /**
      * The console command description.
@@ -80,24 +79,5 @@ class CreateWebhookCommand extends Command
         return $target;
     }
 
-    private function getClient(): \Illuminate\Http\Client\PendingRequest
-    {
-
-        return Http::withToken(config('asana-webhook.personal_access_token'))
-            ->timeout(5);
-
-    }
-
-    private function displayErrors(string $responseBody): void
-    {
-        $this->error('Error while creating webhook:');
-
-        foreach (json_decode($responseBody, true)['errors'] ?? [] as $error) {
-
-            $this->error($error['message'] ?? 'Unknown message');
-
-            $this->warn($error['help'] ?? '');
-
-        }
-    }
+    
 }

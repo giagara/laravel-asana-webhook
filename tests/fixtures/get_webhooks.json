@@ -1,0 +1,37 @@
+{
+    "data": [
+        {
+            "gid": "1234",
+            "active": true,
+            "resource": {
+                "gid": "5678",
+                "name": "Test prj",
+                "resource_type": "project"
+            },
+            "resource_type": "webhook",
+            "target": "https://asana-webhook-demo.example.com/api/webhook"
+        },
+        {
+            "gid": "9999",
+            "active": false,
+            "resource": {
+                "gid": "8888",
+                "name": "Test prj 2",
+                "resource_type": "project"
+            },
+            "resource_type": "webhook",
+            "target": "https://asana-webhook-demo.example.com/api/webhook2"
+        },
+        {
+            "gid": "7777",
+            "active": true,
+            "resource": {
+                "gid": "6666",
+                "name": "Test prj 3",
+                "resource_type": "project"
+            },
+            "resource_type": "webhook",
+            "target": "https://asana-webhook-demo.example.com/api/webhook3"
+        }
+    ]
+}

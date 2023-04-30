@@ -60,12 +60,25 @@ class FakeInvokableClass implements AsanaActionInterface
 
 After this the route api/webhook will be mapped to your invokable class.
 
-## Create a new webhook in Asana
+## Available commands
+
+### Webhook list
+
+```bash
+php artisan asana:list-webhook
+```
+
+NOTE: For this feature create `ASANA_WORKSPACE_ID` field in .env file.
+
+get workspace id by calling [this url](https://app.asana.com/api/1.0/workspaces)
+
+
+### Webhook creation
 
 To create a new webhook in Asana you can use the `CreateWebhookCommand` by calling:
 
 ```bash
-php artisan make:asana-webhook
+php artisan asana:create-webhook
 ```
 
 It will ask for resource id (see Asana documentation) and target url (that should be already reachable by Asana).
@@ -73,11 +86,12 @@ It will ask for resource id (see Asana documentation) and target url (that shoul
 You can pass the parameters in command directly with:
 
 ```bash
-php artisan make:asana-webhook --resource=1234 --target=https://example.com/api/webhook
+php artisan asana:create-webhook --resource=1234 --target=https://example.com/api/webhook
 ```
 
 ### TODO
 
+- [x] Create webhook list command
 - [ ] Delete a webhook via command
 - [ ] Add middleware to route configs
 - [ ] Add name to route config
