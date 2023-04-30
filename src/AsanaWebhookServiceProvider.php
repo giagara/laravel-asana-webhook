@@ -3,6 +3,7 @@
 namespace Giagara\AsanaWebhook;
 
 use Giagara\AsanaWebhook\Console\Commands\CreateWebhookCommand;
+use Giagara\AsanaWebhook\Console\Commands\DeleteWebhookCommand;
 use Giagara\AsanaWebhook\Console\Commands\ListWebhookCommand;
 use Giagara\AsanaWebhook\Http\Middleware\AsanaWebhookMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ class AsanaWebhookServiceProvider extends ServiceProvider
             $this->commands([
                 CreateWebhookCommand::class,
                 ListWebhookCommand::class,
+                DeleteWebhookCommand::class,
             ]);
         }
     }
