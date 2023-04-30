@@ -112,8 +112,8 @@ php artisan asana:delete-webhook {webhook_gid}
 
 - [x] Create webhook list command
 - [x] Delete a webhook via command
-- [ ] Add middleware to route configs
-- [ ] Add name to route config
+- [x] Add middleware to route configs
+- [x] Add name to route config
 - [ ] Trigger via route name
 
 ### Testing
