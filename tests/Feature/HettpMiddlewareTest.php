@@ -33,9 +33,4 @@ class HettpMiddlewareTest extends TestCase
         $response->assertStatus(204);
 
     }
-
-    private function reloadRoutes(): void
-    {
-        (new AsanaWebhookServiceProvider(app()))->boot();
-    }
 }

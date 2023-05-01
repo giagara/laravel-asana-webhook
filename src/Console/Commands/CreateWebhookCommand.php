@@ -2,7 +2,7 @@
 
 namespace Giagara\AsanaWebhook\Console\Commands;
 
-
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 class CreateWebhookCommand extends AsanaBaseCommand
 {
@@ -11,7 +11,7 @@ class CreateWebhookCommand extends AsanaBaseCommand
      *
      * @var string
      */
-    protected $signature = 'asana:create-webhook {--resource=} {--target=}';
+    protected $signature = 'asana:create-webhook {--resource=} {--target=} {--route=}';
 
     /**
      * The console command description.
@@ -33,8 +33,23 @@ class CreateWebhookCommand extends AsanaBaseCommand
             return 90;
         }
 
-        $resource = $this->getResource();
-        $target = $this->getTarget();
+        $resource = $this->getParam("resource");
+        $target = $this->getParam("target", false);
+        $route = $this->getParam("route", false);
+
+        if($target === "" && $route === ""){
+            $this->error('Insert target or route name');
+            return 92;
+        }
+
+        if($target === ""){
+            try {
+                $target = route("asana-webhook-" . $route);
+            } catch (RouteNotFoundException $th) {
+                $this->error($th->getMessage());
+                return 93;
+            }
+        }
 
         $response = $this->getClient()
             ->post('https://app.asana.com/api/1.0/webhooks', [
@@ -57,27 +72,15 @@ class CreateWebhookCommand extends AsanaBaseCommand
 
     }
 
-    private function getResource(): string
+    private function getParam(string $param_name, bool $mandatory = true) : string
     {
-        $resource = $this->option('resource');
+        $param_value = $this->option($param_name);
 
-        if (! $resource) {
-            $resource = $this->ask('Insert resource name');
+        if (! $param_value && $mandatory) {
+            $param_value = $this->ask("Insert {$param_name} name");
         }
 
-        return $resource;
+        return $param_value ?? "";
     }
-
-    private function getTarget(): string
-    {
-        $target = $this->option('target');
-
-        if (! $target) {
-            $target = $this->ask('Insert target');
-        }
-
-        return $target;
-    }
-
     
 }

@@ -22,4 +22,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         // perform environment setup
     }
+
+    protected function reloadRoutes(): void
+    {
+        (new AsanaWebhookServiceProvider(app()))->boot();
+    }
 }

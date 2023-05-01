@@ -72,8 +72,4 @@ class HttpTest extends TestCase
 
     }
 
-    private function reloadRoutes(): void
-    {
-        (new AsanaWebhookServiceProvider(app()))->boot();
-    }
 }
