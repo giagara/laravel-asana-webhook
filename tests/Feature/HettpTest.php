@@ -2,7 +2,6 @@
 
 namespace Giagara\AsanaWebhook\Tests\Feature;
 
-use Giagara\AsanaWebhook\AsanaWebhookServiceProvider;
 use Giagara\AsanaWebhook\Tests\Classes\FakeInvokableClass;
 use Giagara\AsanaWebhook\Tests\Classes\FakeInvokableErrorClass;
 use Giagara\AsanaWebhook\Tests\TestCase;
@@ -71,5 +70,4 @@ class HttpTest extends TestCase
         $response->assertStatus(500);
 
     }
-
 }

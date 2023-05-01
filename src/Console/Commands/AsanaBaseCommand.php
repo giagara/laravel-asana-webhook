@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 abstract class AsanaBaseCommand extends Command
 {
-
-    protected function checkTokenInConfig() : bool 
+    protected function checkTokenInConfig(): bool
     {
         $personal_access_token = config('asana-webhook.personal_access_token');
 
@@ -42,5 +41,4 @@ abstract class AsanaBaseCommand extends Command
 
         }
     }
-
 }

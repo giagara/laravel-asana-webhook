@@ -33,20 +33,22 @@ class CreateWebhookCommand extends AsanaBaseCommand
             return 90;
         }
 
-        $resource = $this->getParam("resource");
-        $target = $this->getParam("target", false);
-        $route = $this->getParam("route", false);
+        $resource = $this->getParam('resource');
+        $target = $this->getParam('target', false);
+        $route = $this->getParam('route', false);
 
-        if($target === "" && $route === ""){
+        if ($target === '' && $route === '') {
             $this->error('Insert target or route name');
+
             return 92;
         }
 
-        if($target === ""){
+        if ($target === '') {
             try {
-                $target = route("asana-webhook-" . $route);
+                $target = route('asana-webhook-'.$route);
             } catch (RouteNotFoundException $th) {
                 $this->error($th->getMessage());
+
                 return 93;
             }
         }
@@ -72,7 +74,7 @@ class CreateWebhookCommand extends AsanaBaseCommand
 
     }
 
-    private function getParam(string $param_name, bool $mandatory = true) : string
+    private function getParam(string $param_name, bool $mandatory = true): string
     {
         $param_value = $this->option($param_name);
 
@@ -80,7 +82,6 @@ class CreateWebhookCommand extends AsanaBaseCommand
             $param_value = $this->ask("Insert {$param_name} name");
         }
 
-        return $param_value ?? "";
+        return $param_value ?? '';
     }
-    
 }

@@ -15,16 +15,16 @@ class DeleteCommandTest extends TestCase
 
         config(['asana-webhook.personal_access_token' => 'test_value']);
 
-        $webhook_gid = "1234";
+        $webhook_gid = '1234';
 
         Http::fake([
-            'https://app.asana.com/api/1.0/webhooks/' . $webhook_gid => Http::response(
-                json_decode(file_get_contents(__DIR__."/../fixtures/delete.json"), true),
+            'https://app.asana.com/api/1.0/webhooks/'.$webhook_gid => Http::response(
+                json_decode(file_get_contents(__DIR__.'/../fixtures/delete.json'), true),
                 $status
             ),
         ]);
 
-        $this->artisan('asana:delete-webhook ' . $webhook_gid)->assertExitCode($exit_code);
+        $this->artisan('asana:delete-webhook '.$webhook_gid)->assertExitCode($exit_code);
 
     }
 

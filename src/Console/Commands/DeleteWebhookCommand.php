@@ -2,8 +2,6 @@
 
 namespace Giagara\AsanaWebhook\Console\Commands;
 
-use Illuminate\Support\Facades\Http;
-
 class DeleteWebhookCommand extends AsanaBaseCommand
 {
     /**
@@ -25,16 +23,16 @@ class DeleteWebhookCommand extends AsanaBaseCommand
      */
     public function handle()
     {
-        if(! $this->checkTokenInConfig()){
+        if (! $this->checkTokenInConfig()) {
             return 90;
         }
 
-        $webhook_gid = $this->argument("gid");
+        $webhook_gid = $this->argument('gid');
 
         $response = $this->getClient()
-            ->delete('https://app.asana.com/api/1.0/webhooks/' . $webhook_gid);
+            ->delete('https://app.asana.com/api/1.0/webhooks/'.$webhook_gid);
 
-        $this->info('Response with status ' . $response->status());
+        $this->info('Response with status '.$response->status());
 
         if ($response->failed()) {
 
@@ -46,6 +44,4 @@ class DeleteWebhookCommand extends AsanaBaseCommand
         $this->info('Webhook list deleted correctly');
 
     }
-
-   
 }

@@ -18,21 +18,20 @@ class ListCommandTest extends TestCase
 
         Http::fake([
             'https://app.asana.com/api/1.0/webhooks?workspace=123456789' => Http::response(
-                json_decode(file_get_contents(__DIR__."/../fixtures/get_webhooks.json"), true),
+                json_decode(file_get_contents(__DIR__.'/../fixtures/get_webhooks.json'), true),
                 $status
             ),
         ]);
 
         $execution = $this->artisan('asana:list-webhook')->assertExitCode($exit_code);
 
-        if($check_table)
-        {
+        if ($check_table) {
             $execution->expectsTable(
-                ["webhook ID", "Resource ID", "Name", "Type", "Target"], 
+                ['webhook ID', 'Resource ID', 'Name', 'Type', 'Target'],
                 [
-                [1234, 5678, "Test prj", "project", "https://asana-webhook-demo.example.com/api/webhook"],
-                [7777, 6666, "Test prj 3", "project", "https://asana-webhook-demo.example.com/api/webhook3"],
-            ]);
+                    [1234, 5678, 'Test prj', 'project', 'https://asana-webhook-demo.example.com/api/webhook'],
+                    [7777, 6666, 'Test prj 3', 'project', 'https://asana-webhook-demo.example.com/api/webhook3'],
+                ]);
         }
 
     }

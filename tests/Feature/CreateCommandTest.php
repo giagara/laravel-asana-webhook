@@ -20,7 +20,7 @@ class CreateCommandTest extends TestCase
                 'class' => FakeInvokableClass::class,
                 'name' => 'webhook-1',
                 'middleware' => [FakeMiddleware::class],
-            ]
+            ],
         ]]);
 
         $this->reloadRoutes();
@@ -34,10 +34,10 @@ class CreateCommandTest extends TestCase
 
         $base_command = 'asana:create-webhook --resource=1 ';
 
-        if($target !== null){
-            $base_command .= " --target=" . $target;
-        }else{
-            $base_command .= " --route=" . $route;
+        if ($target !== null) {
+            $base_command .= ' --target='.$target;
+        } else {
+            $base_command .= ' --route='.$route;
         }
 
         $this->artisan($base_command)->assertExitCode($exit_code);
@@ -52,28 +52,28 @@ class CreateCommandTest extends TestCase
                 'fixture' => '200',
                 'exit_code' => 0,
                 'target' => 'https://example.com',
-                'route' => null
+                'route' => null,
             ],
             'error with target' => [
                 'status' => 400,
                 'fixture' => '400',
                 'exit_code' => 91,
                 'target' => 'https://example.com',
-                'route' => null
+                'route' => null,
             ],
             'ok with route' => [
                 'status' => 200,
                 'fixture' => '200',
                 'exit_code' => 0,
                 'target' => null,
-                'route' => 'webhook-1'
+                'route' => 'webhook-1',
             ],
             'error with route' => [
                 'status' => 400,
                 'fixture' => '400',
                 'exit_code' => 91,
                 'target' => null,
-                'route' => 'webhook-1'
+                'route' => 'webhook-1',
             ],
         ];
     }

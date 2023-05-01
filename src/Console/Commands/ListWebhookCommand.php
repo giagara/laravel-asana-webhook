@@ -2,8 +2,6 @@
 
 namespace Giagara\AsanaWebhook\Console\Commands;
 
-use Illuminate\Support\Facades\Http;
-
 class ListWebhookCommand extends AsanaBaseCommand
 {
     /**
@@ -25,13 +23,13 @@ class ListWebhookCommand extends AsanaBaseCommand
      */
     public function handle()
     {
-        if(! $this->checkTokenInConfig()){
+        if (! $this->checkTokenInConfig()) {
             return 90;
         }
 
         $response = $this->getClient()
             ->get('https://app.asana.com/api/1.0/webhooks', [
-                'workspace' => config('asana-webhook.workspace_id')
+                'workspace' => config('asana-webhook.workspace_id'),
             ]);
 
         $this->info('Response with status '.$response->status());
@@ -45,27 +43,24 @@ class ListWebhookCommand extends AsanaBaseCommand
 
         $this->info('Webhook list');
 
-        $webhooks = collect($response->json()["data"] ?? []);
+        $webhooks = collect($response->json()['data'] ?? []);
 
         $webhooks = $webhooks
-            ->filter(fn($item) => $item["active"])
-            ->map(function($item){
+            ->filter(fn ($item) => $item['active'])
+            ->map(function ($item) {
                 return [
-                    "webhook_id" => $item["gid"] ?? "--",
-                    "resource_id" => $item["resource"]["gid"] ?? "--",
-                    "name" => $item["resource"]["name"] ?? "--",
-                    "type" => $item["resource"]["resource_type"] ?? "--",
-                    "target" => $item["target"] ?? "--",
+                    'webhook_id' => $item['gid'] ?? '--',
+                    'resource_id' => $item['resource']['gid'] ?? '--',
+                    'name' => $item['resource']['name'] ?? '--',
+                    'type' => $item['resource']['resource_type'] ?? '--',
+                    'target' => $item['target'] ?? '--',
                 ];
             });
-            
 
         $this->table(
-            ["webhook ID", "Resource ID", "Name", "Type", "Target"],
+            ['webhook ID', 'Resource ID', 'Name', 'Type', 'Target'],
             $webhooks->toArray()
         );
 
     }
-
-   
 }
