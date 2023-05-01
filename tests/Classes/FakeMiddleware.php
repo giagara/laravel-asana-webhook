@@ -8,5 +8,4 @@ class FakeMiddleware
     {
         return $next($request);
     }
-    
 }

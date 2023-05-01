@@ -100,6 +100,12 @@ You can pass the parameters in command directly with:
 php artisan asana:create-webhook --resource=1234 --target=https://example.com/api/webhook
 ```
 
+```bash
+php artisan asana:create-webhook --resource=1234 --route=route-name
+```
+
+The `--route` parameter is the route name: see `php artisan route:list`
+
 
 ### Delete Webhook
 
@@ -114,7 +120,7 @@ php artisan asana:delete-webhook {webhook_gid}
 - [x] Delete a webhook via command
 - [x] Add middleware to route configs
 - [x] Add name to route config
-- [ ] Trigger via route name
+- [x] Trigger via route name
 
 ### Testing
 
