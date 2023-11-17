@@ -42,7 +42,7 @@ jobs:
       - name: Execute tests
         run: |
           mkdir coverage
-          vendor/bin/phpunit --coverage --coverage-clover coverage/coverage.xml
+          vendor/bin/phpunit --coverage-clover coverage/coverage.xml
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:
