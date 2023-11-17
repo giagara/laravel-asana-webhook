@@ -40,7 +40,16 @@ jobs:
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
           composer update --prefer-dist --no-interaction
       - name: Execute tests
-        run: vendor/bin/phpunit
+        run: |
+          mkdir coverage
+          vendor/bin/phpunit --coverage-clover coverage/coverage.xml
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/coverage.xml
+          flags: backend
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   phplint:
     runs-on: ubuntu-latest
