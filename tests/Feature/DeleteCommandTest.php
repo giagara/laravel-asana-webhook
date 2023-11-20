@@ -41,4 +41,14 @@ class DeleteCommandTest extends TestCase
             ],
         ];
     }
+
+    public function test_command_will_fail_if_missing_token()
+    {
+
+        config(['asana-webhook.personal_access_token' => null]);
+        config(['asana-webhook.workspace_id' => '123456789']);
+
+        $this->artisan('asana:delete-webhook 1234')->assertExitCode(90);
+
+    }
 }
