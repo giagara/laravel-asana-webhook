@@ -2,6 +2,7 @@
 
 ![CI/CD](https://github.com/giagara/laravel-asana-webhook/actions/workflows/main.yml/badge.svg?branch=main)
 ![Packagist](https://img.shields.io/packagist/v/giagara/laravel-asana-webhook.svg)
+[![codecov](https://codecov.io/gh/giagara/laravel-asana-webhook/graph/badge.svg?token=ELK195H5AI)](https://codecov.io/gh/giagara/laravel-asana-webhook)
 
 
 This package let you integrate easily with Asana Webhooks.
