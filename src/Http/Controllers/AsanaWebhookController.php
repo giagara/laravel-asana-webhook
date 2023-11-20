@@ -13,10 +13,6 @@ class AsanaWebhookController
     {
         $path = Str::replace('api/', '', $request->path());
 
-        if (! in_array($path, array_keys(config('asana-webhook.routes')))) {
-            abort(404);
-        }
-
         $invokable_config = config('asana-webhook.routes')[$path];
         $invokable = is_array($invokable_config)
             ? new $invokable_config['class']
