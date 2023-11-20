@@ -92,7 +92,7 @@ class CreateCommandTest extends TestCase
     public function test_command_will_return_error_if_target_or_oute_not_set()
     {
 
-        config(['asana-webhook.personal_access_token' => "something"]);
+        config(['asana-webhook.personal_access_token' => 'something']);
 
         $base_command = 'asana:create-webhook --resource=1 ';
 
@@ -103,7 +103,7 @@ class CreateCommandTest extends TestCase
     public function test_command_will_return_error_if_target_not_set()
     {
 
-        config(['asana-webhook.personal_access_token' => "something"]);
+        config(['asana-webhook.personal_access_token' => 'something']);
 
         config(['asana-webhook.routes' => [
             'webhook' => [
